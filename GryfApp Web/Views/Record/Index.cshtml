@@ -3,5 +3,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista terminów</h1>
+
+<ul>
+    @foreach (var record in ViewBag.Records)
+            {
+                <li>@record.userName</li>
+                <li>@record.userDate</li>
+                <li>@record.userParts</li>
+            }
+</ul>
 
