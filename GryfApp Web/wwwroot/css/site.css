@@ -58,9 +58,13 @@ html {
   min-height: 100%;
 }
 
+
+
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    color: lawngreen;
+    background-color: #12110F;
+    margin-bottom: 60px;
 }
 .footer {
   position: absolute;
