@@ -7,5 +7,10 @@ namespace GryfApp_Web.Models
 {
     public class User
     {
-    }
+
+	public string email { get; set; }
+		public string pss { get; set; }
+
+
+	}
 }
