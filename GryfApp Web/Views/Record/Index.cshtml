@@ -1,16 +1,42 @@
-﻿
+﻿@model IEnumerable<Record>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista terminów</h1>
 
-<ul>
-    @foreach (var record in ViewBag.Records)
+<body>
+    <center>
+        <h1>Lista terminów</h1>
+        <button class="btn btn-lg btn-success">Dodaj</button>
+        <h1></h1>
+    </center>
+    
+    <table class="table">
+        <tbody>
+            <!--Dla wszystich kart w liscie-->
+            @foreach (var model in Model)
             {
-                <li>@record.userName</li>
-                <li>@record.userDate</li>
-                <li>@record.userParts</li>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelitem => model.userName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => model.userDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => model.userParts)
+                    </td>
+                    @{ if (ViewBag.UserId != null)
+                        {
+                            if (ViewBag.UserId == model.userId)
+                            {
+                                <td><button class="btn btn-sm btn-dark">Usuń</button></td>
+                            }
+                        }
+                    }
+                </tr>
             }
-</ul>
+        </tbody>
 
+    </table>
+</body>
