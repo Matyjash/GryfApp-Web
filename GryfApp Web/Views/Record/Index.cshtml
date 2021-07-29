@@ -7,16 +7,16 @@
 <body>
     <center>
         <h1>Lista terminów</h1>
-        <button class="btn btn-lg btn-success">Dodaj</button>
+        <input type="button" class="btn btn-lg btn-success" value="Create" onclick="location.href='@Url.Action("Create", "Record")'" />
         <h1></h1>
     </center>
-    
+
     <table class="table">
         <tbody>
             <!--Dla wszystich kart w liscie-->
             @foreach (var model in Model)
             {
-                <tr>
+                <tr style="color:lawngreen">
                     <td>
                         @Html.DisplayFor(modelitem => model.userName)
                     </td>

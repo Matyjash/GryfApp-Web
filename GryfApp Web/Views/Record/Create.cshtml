@@ -1,0 +1,29 @@
+﻿@model GryfApp_Web.Models.Record
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Dodawanie wpisu</h1>
+</div>
+
+@using (Html.BeginForm("Create", "Record", FormMethod.Post))
+{
+<center>
+    <table style="margin-top: 100px">
+
+        <tr>
+            <td>Imię</td>
+            <td>@Html.TextBoxFor(model => model.userName)</td>
+        </tr>
+        <tr>
+            <td>Data</td>
+            <td>@Html.TextBoxFor(model => model.userDate)</td>
+        </tr>
+        <tr>
+            <td>Ćwiczone partie i adnotacje</td>
+            <td>@Html.TextBoxFor(model => model.userParts)</td>
+        </tr>
+
+    </table>
+</center>
+}
