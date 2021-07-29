@@ -7,6 +7,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using System.Web;
 using GryfApp_Web.Models;
+using Firebase.Auth;
 
 namespace GryfApp_Web.Controllers
 {
@@ -15,29 +16,21 @@ namespace GryfApp_Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-
+            ViewBag.UserId = "yrOpvYYArfN3iZLTBUKn6ms0Oe13";
             //Firebase client
             var firebaseClient = new FirebaseClient("https://ehhapp-5467e.firebaseio.com/");
             //List for received records from database
             var recordsList = new List<Record>();
-
-
-            /*
-            var result = await firebaseClient
-                .Child("data")
-                .Child("records")
-                .PostAsync(exampleRecord);
-            */
-
 
             //Retrieving entries data from Firebase database
             var dbRecord = await firebaseClient
                 .Child("data")
                 .Child("records")
                 .OnceAsync<Record>();
-
+            //Getting yesterday date to compare with
             var yesterday = DateTime.Now;
             yesterday.AddDays(-1);
+            //Filling recordsList
             foreach (var record in dbRecord)
             {
                 if (Convert.ToDateTime(record.Object.userDate).ToLocalTime().CompareTo(yesterday) > (-1))
@@ -47,15 +40,13 @@ namespace GryfApp_Web.Controllers
                 }
             }
 
-            // TODO: Sorting list of records
+            //Sorting records by date
+            recordsList.Sort((x, y) => DateTime.Compare(DateTime.Parse(x.userDate), DateTime.Parse(y.userDate)));
 
             //Pasing data to the view
-            ViewBag.Records = recordsList;
+            ViewBag.Records = recordsList;        
 
-           
-            System.Diagnostics.Debug.WriteLine("Number of records:" + recordsList.Count);
-
-            return View();
+            return View(recordsList);
         }
     }
 }

@@ -25,5 +25,6 @@ namespace GryfApp_Web.Models
         public String userName { get; set; }
 
         public String userParts { get; set; }
+
     }
 }
