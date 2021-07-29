@@ -48,5 +48,10 @@ namespace GryfApp_Web.Controllers
 
             return View(recordsList);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
