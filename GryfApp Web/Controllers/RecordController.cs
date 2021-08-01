@@ -13,9 +13,12 @@ namespace GryfApp_Web.Controllers
 {
     public class RecordController : Controller
     {
+        //TODO: delete user id in view bag
+        String UserId = "yrOpvYYArfN3iZLTBUKn6ms0Oe13";
 
         public async Task<IActionResult> Index()
         {
+            //TODO: delete user id in view bag
             ViewBag.UserId = "yrOpvYYArfN3iZLTBUKn6ms0Oe13";
             //Firebase client
             var firebaseClient = new FirebaseClient("https://ehhapp-5467e.firebaseio.com/");
@@ -49,9 +52,49 @@ namespace GryfApp_Web.Controllers
             return View(recordsList);
         }
 
+        public ActionResult ErrorInput()
+        {
+            return View();
+        }
+
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateAsync(Record newRecord)
+        {
+            //if any of input data is blank then display error
+            if (newRecord.userDate == null || newRecord.userName == null || newRecord.userParts == null || UserId.Length == null || UserId.Length == 0)
+            {
+                return RedirectToAction(nameof(ErrorInput));
+            }
+
+            //posting new record to firebase database
+            var firebaseClient = new FirebaseClient("https://ehhapp-5467e.firebaseio.com/");
+
+            var result = await firebaseClient
+                .Child("data")
+                .Child("records")
+                .PostAsync(newRecord);
+
+            var id = result.Key;
+            newRecord.recordId = id;
+            newRecord.userId = UserId;
+
+            await firebaseClient
+                .Child("data")
+                .Child("records")
+                .Child(id)
+                .PutAsync(newRecord);
+
+            return RedirectToAction(nameof(ShowRecord),newRecord);
+        }
+
+        public ActionResult ShowRecord(Record record)
+        {
+            return View(record);
         }
     }
 }

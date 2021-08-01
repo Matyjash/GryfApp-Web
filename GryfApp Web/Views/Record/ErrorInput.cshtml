@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Error";
+}
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Wszystkie dane muszą zostać wprowadzone przed przesłaniem wpisu!</h1>
+    </div>
+
+    <center>
+        <button onclick="location.href='@Url.Action("Create", "Record")'">
+            Wróć
+        </button>
+    </center>
+</body>
+
