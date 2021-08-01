@@ -2,19 +2,18 @@
 using System;
 using Firebase.Auth;
 using GryfApp_Web.Models;
+using System.Net.Http;
 
 namespace GryfApp_Web.Controllers
 {
     public class LoginController : Controller
     {
-        string email;
-        string pss;
-        bool isValid = false;
-
+        private static string ApiKey = "AIzaSyDG_Jhltdmbi6qAmbFHusUUNO0dGx3dPDM";
+        private static string Bucket = "https://ehhapp-5467e.firebaseio.com/";
+        // GET: Account
 
         public ActionResult Index()
 		{
-           
             return View();
 		}
 
@@ -23,39 +22,34 @@ namespace GryfApp_Web.Controllers
 		{
             string email = user.email;
             string pss = user.pss;
-           
 
-            connectToFireBase(email, pss);
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyDG_Jhltdmbi6qAmbFHusUUNO0dGx3dPDM"));
 
-            if (isValid == false)
+            var auth = authProvider.SignInWithEmailAndPasswordAsync(email, pss);
+            try
             {
-                System.Diagnostics.Debug.WriteLine("post");
-                return View(nameof(Login));
-			}
-			else
+                if (auth.Result.User.IsEmailVerified)
+                {
+                    return View("Login", user);
+                }
+            } catch (FirebaseAuthException e)
+            {
+                return View("Index");
+            } catch (HttpRequestException e)
 			{
-                return View(user);
+                return View("Index");
+            }catch(System.AggregateException e)
+			{
+                return View("Index");
 			}
-		}
-        
- 
-       
-       
 
-
-        public void getUserInput()
-		{
-
-		}
-        private async void connectToFireBase(string email, string pss)
-		{
+            return View();
 			
-                var authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyDG_Jhltdmbi6qAmbFHusUUNO0dGx3dPDM"));
 
-                var auth = await authProvider.SignInWithEmailAndPasswordAsync(email,pss);
+        }
 
-                isValid = true;
-            
-		}
+
+
+
     }
 }
