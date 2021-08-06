@@ -1,17 +1,21 @@
 ﻿@model GryfApp_Web.Models.User
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
 
 <h1>Logowanie</h1>
 
-@using (Html.BeginForm("Login", "Login", FormMethod.Post))
-{
-    <div class="container">
-        
-        <label for="uname"><b>Username</b></label>
-        @Html.TextBoxFor(model => model.email)
 
-        <label for="psw"><b>Password</b></label>
-        @Html.TextBoxFor(model => model.pss)
-        <input type="submit" value="login" />
 
-    </div>
-}
+
+<div class="container" id="login-form">
+    <input type="email" placeholder="email" id="email" />
+
+    <input type="password" placeholder="password" id="password" />
+
+    <button id="signIn" style="float:left">Sign In</button>
+</div>
+
+<button id="signOut" style="float:initial" >Sign Out</button>
+
+
+<script src="~/js/user.js"></script>

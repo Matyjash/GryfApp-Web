@@ -1,31 +1,33 @@
 ﻿@model GryfApp_Web.Models.Record
 
 
-
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
 <div class="text-center">
     <h1 class="display-4">Dodawanie wpisu</h1>
 </div>
 
 @using (Html.BeginForm("Create", "Record", FormMethod.Post))
 {
-<center>
-    <table style="margin-top: 100px">
+    <center>
+        <table style="margin-top: 100px">
 
-        <tr>
-            <td>Imię</td>
-            <td>@Html.TextBoxFor(model => model.userName)</td>
-        </tr>
-        <tr>
-            <td>Data</td>
-            <td>@Html.TextBoxFor(model => model.userDate)</td>
-        </tr>
-        <tr>
-            <td>Ćwiczone partie i adnotacje</td>
-            <td>@Html.TextBoxFor(model => model.userParts)</td>
-        </tr>
+            <tr>
+                <td>Imię</td>
+                <td>@Html.TextBoxFor(model => model.userName)</td>
+            </tr>
+            <tr>
+                <td>Data</td>
+                <td>@Html.TextBoxFor(model => model.userDate)</td>
+            </tr>
+            <tr>
+                <td>Ćwiczone partie i adnotacje</td>
+                <td>@Html.TextBoxFor(model => model.userParts)</td>
+            </tr>
 
-    </table>
+        </table>
 
-    <input type="submit" value="Dodaj" />
-</center>
+        <input type="submit" value="Dodaj" />
+    </center>
 }
+<script src="~/js/user.js"></script>

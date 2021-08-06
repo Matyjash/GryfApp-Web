@@ -20,16 +20,16 @@
                 </button>
                 <div class="navbar-green-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        <li class="nav-item" id="homepage_layout">
                             <a class="navbar-link navbar-green-text" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="schedule_layout">
                             <a class="navbar-link navbar-green-text" asp-area="" asp-controller="Record" asp-action="Index">Terminarz</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="login_layout">
                             <a class="navbar-link navbar-green-text" asp-area="" asp-controller="Login" asp-action="Index">Logowanie</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="info_layout">
                             <a class="navbar-link navbar-green-text" asp-area="" asp-controller="Home" asp-action="Privacy">Informacje</a>
                         </li>
                     </ul>
@@ -49,3 +49,5 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+<script src="~/js/user.js"></script>
