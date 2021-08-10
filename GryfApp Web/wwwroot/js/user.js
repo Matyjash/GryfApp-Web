@@ -11,6 +11,22 @@
 
 firebase.initializeApp(firebaseConfig);
 
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        console.log("zalogowany");
+        document.getElementById("login-form").style.display = 'none';
+    } else {
+        console.log("niezalogowany");
+        if (window.location.href == "https://localhost:44389/Record" || window.location.href == "https://localhost:44389/Record/ShowRecord" || window.location.href == "https://localhost:44389/Record/ErrorInput"
+            || window.location.href == "https://localhost:44389/Record/Create") {
+            window.location.replace("https://localhost:44389/Login")
+        }
+    }
+
+
+});
+
 const bttnSignIn = document.getElementById('signIn');
 const bttnSignOut = document.getElementById('signOut');
 const txtEmail = document.getElementById('email');
@@ -26,22 +42,7 @@ setTimeout(() => {
 
 }, 200);
 
-firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        console.log("zalogowany");
-        document.getElementById("login-form").style.display = 'none';
-        document.getElementById("schedule_layout").style.display = "";
-    } else {
-        console.log("niezalogowany");
-        document.getElementById("schedule_layout").style.display = "none";
-        if (window.location.href == "https://localhost:44389/Record" || window.location.href == "https://localhost:44389/Record/ShowRecord" || window.location.href == "https://localhost:44389/Record/ErrorInput"
-            || window.location.href == "https://localhost:44389/Record/Create") {
-            window.location.replace("https://localhost:44389/Login")
-        }
-        }
-    
 
-});
 
 setTimeout(() => {
     bttnSignOut.addEventListener('click', e => {
