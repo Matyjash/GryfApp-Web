@@ -1,10 +1,12 @@
 ﻿@model GryfApp_Web.Models.Record
-    <body>
+   
+
+<body>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/navbar.css" />
         <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
-
 
         <div class="text-center">
             <h1 class="display-4">Dodawanie wpisu</h1>
@@ -15,13 +17,14 @@
             <center>
                 <form style="margin-top: 100px">
 
-                    <div class="form-group">
+                    <div class="input-group">
                         @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextBoxFor(model => model.userName, new { htmlAttributes = new { @class = "form-control col-md-5" } })
                     </div>
                     <div class="form-group">
+
                         <label asp-for="userDate" class="control-label"></label>
-                        <div class='input-group date' id='datepicker'>
+                        <div class='input-group date col-md-5' id='datepicker'>
                             <input asp-for="userDate" type="text" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -29,9 +32,9 @@
                         </div>
                         <span asp-validation-for="userDate" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="input-group">
                         @Html.LabelFor(model => model.userParts, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.userParts, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextBoxFor(model => model.userParts, new { htmlAttributes = new { @class = "form-control col-md-5" } })
                     </div>
 
                     <div class="form-group">

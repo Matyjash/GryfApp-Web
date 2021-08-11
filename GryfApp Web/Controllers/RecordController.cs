@@ -8,6 +8,7 @@ using Firebase.Database.Query;
 using System.Web;
 using GryfApp_Web.Models;
 using Firebase.Auth;
+using GryfApp_Web.Helpers;
 
 namespace GryfApp_Web.Controllers
 {
@@ -74,6 +75,10 @@ namespace GryfApp_Web.Controllers
             //posting new record to firebase database
             var firebaseClient = new FirebaseClient("https://ehhapp-5467e.firebaseio.com/");
 
+            //formating date
+            String formatedDate = CustomDateFormat.formatDateFromTimePicker(newRecord.userDate);
+            newRecord.userDate = formatedDate;
+
             var result = await firebaseClient
                 .Child("data")
                 .Child("records")
@@ -96,5 +101,8 @@ namespace GryfApp_Web.Controllers
         {
             return View(record);
         }
+
+        
     }
+    
 }
