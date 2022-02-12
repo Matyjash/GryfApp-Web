@@ -1,3 +1,4 @@
+**Progress: 50%** 
 # GryfApp-Web
 Website version of GryfApp project which was designed as android mobile application.
 
