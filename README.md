@@ -1,4 +1,4 @@
-**Progress: 50%** 
+**Progress: 90%** 
 # GryfApp-Web
 Website version of GryfApp project which was designed as android mobile application.
 
@@ -11,8 +11,8 @@ outdated.
 ![This is an image](/page.png)
 
 ## Technologies
-- .NET Core 3.1
+- .NET Framework 4.7.2
 - Firebase Database
 - Firebase Authentication
-- Bootstrap 4.3.1
+- Bootstrap
 - jQuery
