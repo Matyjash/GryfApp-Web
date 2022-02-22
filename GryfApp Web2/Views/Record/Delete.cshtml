@@ -1,0 +1,49 @@
+﻿@model GryfApp_Web2.Models.RecordModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Usuwanie</h2>
+
+<h3>Czy na pewno chcesz usunąć poniższy post?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        
+
+        <dt>
+            Data
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userDate)
+        </dd>
+
+        <dt>
+            Nazwa użytkownika
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            Ćwiczone partie
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userParts)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-success" /> |
+            @Html.ActionLink("Wróć", "Index", "Record", new { @style = "color:lawngreen" })
+        </div>
+    }
+</div>

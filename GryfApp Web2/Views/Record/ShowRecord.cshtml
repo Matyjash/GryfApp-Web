@@ -1,0 +1,28 @@
+﻿@model GryfApp_Web2.Models.RecordModel
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/list.css" />
+
+
+
+<body>
+    <center>
+        <div class="text-center">
+            <h1 class="display-4">Dodano wpis!</h1>
+        </div>
+
+        <ul class="list-group" style="width: 50%">
+            <li class="list-group-item list-group-item-black">@Html.DisplayFor(modelitem => modelitem.userName)</li>
+            <li class="list-group-item list-group-item-black">@Html.DisplayFor(modelitem => modelitem.userDate)</li>
+            <li class="list-group-item list-group-item-black">@Html.DisplayFor(modelitem => modelitem.userParts)</li>
+        </ul>
+
+        <button style="margin-top: 50px" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Record")'">
+            Terminarz
+        </button>
+    </center>
+</body>
+<script src="~/js/user.js"></script>
+
+
+

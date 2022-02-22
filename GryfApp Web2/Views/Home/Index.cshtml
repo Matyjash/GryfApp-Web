@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="background-color: #5a5a5a">
+    <h1>GryfApp</h1>
+    <br /> <br />
+    <img src="~/Content/Images/logo3.png" align="left" 
+   style="float:left; margin-right:10px; border:none;"
+    width="210px"
+    height="130px"
+   alt="Logo"
+   title="Gryf logo" />
+
+    <p class="lead ">GryfApp to aplikacja pozwalająca na łatwe organizowanie grupowych treningów na naszej lokalnej słubickiej siłowni. 
+    Zaoszczędź czas i zaplanuj swój trening sugerując się wpisami innych.</p>
+    <br />
+    <br />
+</div>
+
+<div class="row">
+    @if (!Request.IsAuthenticated)
+    {
+    <div class="col-md-4">
+        <h2>Załóż konto</h2>
+        <p>
+            Aby wyświetlać terminarz i zamieszczać swoje treningi na stronie będziesz potrzebował własnego konta. Utworzenie go zajmie
+            tylko chwilę i nie wymaga podawania szczegółowych danych.
+        </p>
+        <p><a class="btn btn-success" href='@Url.Action("SignUp", "Account")' ;>Przejdź &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Zaloguj</h2>
+        <p>
+            Posiadasz już konto na naszej stronie? Zaloguj się używając danych podanych przy rejestracji aby uzyskać pełny dostęp
+            do aplikacji
+        </p>
+        <p><a class="btn btn-success" href='@Url.Action("Login", "Account")'>Przejdź &raquo;</a></p>
+    </div>
+    }
+    <div class="col-md-4">
+        <h2>Gryf</h2>
+        <p>Chcesz dowiedzieć się więcej na temat siłowni Gryf? Odwiedź stronę facebook prowadzoną przez właścicieli siłowni.</p>
+        <p><a class="btn btn-success" href="https://www.facebook.com/Si%C5%82ownia-Gryf-S%C5%82ubice-150099258920162/" target="_blank">Przejdź &raquo;</a></p>
+    </div>
+    @if (Request.IsAuthenticated)
+    {
+    <div class="col-md-4">
+        <h2>Terminarz</h2>
+        <p>Chcesz dowiedzieć się kiedy twoi znajomi planują przyjść na trenieng? A może chcesz opublikować własną sesję? Przejdź do terminarza
+        aby mieć podląd na wszystkie terminy.</p>
+        <p><a class="btn btn-success" href='@Url.Action("Index", "Record")'>Przejdź&raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Zaplanuj trening</h2>
+        <p>Planujesz przyjść na siłownię i chciałbyś poinformować o tym fakcie resztę znajomych? Wypełnij formularz i dodaj swój termin do ogólnodostępnego terminarza.</p>
+        <p><a class="btn btn-success" href='@Url.Action("Create", "Record")'>Przejdź &raquo;</a></p>
+    </div>
+    }
+</div>

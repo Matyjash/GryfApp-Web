@@ -1,0 +1,54 @@
+﻿@using GryfApp_Web2.Models
+@using GryfApp_Web2.Helpers
+@model IEnumerable<RecordModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<body>
+    <div id="recordsDiv">
+        <center>
+            <h1>Terminarz</h1>
+            <input type="button" class="btn btn-lg btn-success" value="Dodaj" onclick="location.href='@Url.Action("Create", "Record")'" />
+            <h1></h1>
+        </center>
+
+        <table class="table">
+            <tbody>
+                <!--Dla wszystich kart w liscie-->
+                @foreach (var model in Model)
+                {
+                
+                <tr style="color:lawngreen">
+                    <td>
+                        @Html.DisplayFor(modelitem => model.userName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => model.userDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => model.userParts)
+                    </td>
+                    @{ if (CurrentUser.userId != null)
+                        {
+                            if (CurrentUser.userId.Equals(model.userId))
+                            {
+
+                                <td>
+
+                                    @Html.ActionLink("Usuń", "Delete", "Record", new { recordId = model.recordId }, new { @class = "btn btn-sm btn-dark" })
+
+                                </td>
+                                
+
+                            }
+                        }
+                    }
+                </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</body>
